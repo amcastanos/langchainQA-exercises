@@ -5,6 +5,7 @@ from langchain.document_loaders import CSVLoader
 from langchain.indexes import VectorstoreIndexCreator
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
+from llm_model import get_model
 
 load_dotenv()
 
@@ -21,7 +22,7 @@ db = Chroma.from_documents(
 )
 retriever = db.as_retriever()
 
-llm_model = "gpt-3.5-turbo-0301"
+llm_model = get_model()
 llm = ChatOpenAI(temperature=0.0, model=llm_model)
 
 qa_stuff = RetrievalQA.from_chain_type(
