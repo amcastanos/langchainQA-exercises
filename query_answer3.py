@@ -24,15 +24,15 @@ retriever = db.as_retriever()
 llm_model = "gpt-3.5-turbo-0301"
 llm = ChatOpenAI(temperature=0.0, model=llm_model)
 
-qa_stuff = RetrievalQA.from_chain_type()
+qa_stuff = RetrievalQA.from_chain_type(
+    llm=llm,
+    chain_type="stuff",
+    retriever=retriever,
+    verbose=True
+)
 
+query = "Please list all your \
+shirts with sun protection in a table and summarize each one."
 
-llm_model = "gpt-3.5-turbo-0301"
-llm = ChatOpenAI(temperature=0.0, model=llm_model)
-
-qdocs = "".join([ansDocs[i].page_content for i in range(len(ansDocs))])
-
-response = llm.call_as_llm(f"{qdocs} Question: Please list all your \
-shirts with sun protection in a table and summarize each one.")
-
+response = qa_stuff.run(query)
 print(response)
