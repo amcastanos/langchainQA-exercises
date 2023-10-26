@@ -8,7 +8,7 @@ from llm_model import get_model
 
 load_dotenv()
 
-file = f'C:\\Users\\user\\Documents\\python\\AI\\Langchain\\OutdoorClothingCatalog_1000.csv'
+file = f'OutdoorClothingCatalog_1000.csv'
 loader = CSVLoader(file_path=file, encoding='UTF-8')
 
 docs = loader.load()

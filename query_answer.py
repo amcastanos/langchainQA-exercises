@@ -4,7 +4,7 @@ from langchain.indexes import VectorstoreIndexCreator
 
 load_dotenv()
 
-file = f'C:\\Users\\user\\Documents\\python\\AI\\Langchain\\OutdoorClothingCatalog_1000.csv'
+file = f'OutdoorClothingCatalog_1000.csv'
 loader = CSVLoader(file_path=file, encoding='UTF-8')
 
 index_creator = VectorstoreIndexCreator()
